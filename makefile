@@ -9,11 +9,8 @@ build: clear
 	@echo " "
 	docker build -t ${name} .
 
-run: clear
-	@echo " "
-	@echo "Executing..."
-	@echo " "
-	docker run --rm -d mozart409/fabric-server-mozart409:latest
+up: clear
+	docker compose up --build --remove-orphans
 
-exec: clear
-	docker run --rm -it -p 25565:25565/tcp -p 25575:25575/tcp mozart409/fabric-server-mozart409:latest /bin/bash
+mods: clear
+	./mods.sh
